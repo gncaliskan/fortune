@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "938412959318",
+    "project_id": "fortune-c52ea",
+    "storage_bucket": "fortune-c52ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938412959318:android:8ada0a7dbcce736c9f3df7",
+        "android_client_info": {
+          "package_name": "com.cookie.fortune"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938412959318-auun563lr7dbhl6m2l98lj6k85aeogg4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cookie.fortune",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "938412959318-1q1khtksscple66bdqc94605m5a8q1a6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbzKmw3UcRylEClY0X4L8eyja06Tx52qk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938412959318-1q1khtksscple66bdqc94605m5a8q1a6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "938412959318-e131kc5md0iekvvs1k2h5nip9jujaarq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cookie.fortune"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
