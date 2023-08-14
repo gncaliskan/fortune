@@ -143,10 +143,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 50.0, 20.0, 50.0),
                                   child: GradientText(
-                                    valueOrDefault<String>(
-                                      _model.selectedDocument?.message,
-                                      'A mentor will enter your life and offer valuable guidance.',
-                                    ),
+                                    FFAppState().isFinished
+                                        ? _model.selectedDocument!.message
+                                        : '',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
