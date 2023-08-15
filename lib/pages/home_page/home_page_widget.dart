@@ -36,6 +36,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
   }
 
   @override
@@ -63,7 +65,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Expanded(
+                Flexible(
                   child: Stack(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     children: [
@@ -99,7 +101,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             'assets/lottie_animations/animation_lktivwi8.json',
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: MediaQuery.sizeOf(context).height * 1.0,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitWidth,
                             controller: cookieAnimationController,
                             onLoaded: (composition) => cookieAnimationController
                                 .duration = composition.duration,

@@ -40,7 +40,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Colors.transparent,
+                color: Color(0x00FFFFFF),
                 child: Image.asset(
                   'assets/images/upscaled.png',
                   fit: BoxFit.fitHeight,
@@ -55,7 +55,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: Colors.transparent,
+                    color: Color(0x00FFFFFF),
                     child: Image.asset(
                       'assets/images/upscaled.png',
                       fit: BoxFit.fitHeight,
