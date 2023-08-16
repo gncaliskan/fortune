@@ -14,13 +14,7 @@ import 'home_page_model.dart';
 export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({
-    Key? key,
-    bool? isAnimationFinished,
-  })  : this.isAnimationFinished = isAnimationFinished ?? false,
-        super(key: key);
-
-  final bool isAnimationFinished;
+  const HomePageWidget({Key? key}) : super(key: key);
 
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
@@ -69,45 +63,45 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   child: Stack(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await cookieAnimationController.forward();
-                            cookieAnimationController.reset();
-                            await Future.delayed(
-                                const Duration(milliseconds: 1500));
-                            _model.selectedDocument =
-                                await queryMessagesRecordOnce(
-                              queryBuilder: (messagesRecord) =>
-                                  messagesRecord.where('message_id',
-                                      isEqualTo: valueOrDefault<int>(
-                                        random_data.randomInteger(1, 200),
-                                        1,
-                                      )),
-                              singleRecord: true,
-                            ).then((s) => s.firstOrNull);
-                            setState(() {
-                              FFAppState().isFinished = true;
-                            });
+                      if (!FFAppState().isFinished)
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await cookieAnimationController.forward();
+                              cookieAnimationController.reset();
+                              _model.selectedDocument =
+                                  await queryMessagesRecordOnce(
+                                queryBuilder: (messagesRecord) =>
+                                    messagesRecord.where('message_id',
+                                        isEqualTo: valueOrDefault<int>(
+                                          random_data.randomInteger(1, 200),
+                                          1,
+                                        )),
+                                singleRecord: true,
+                              ).then((s) => s.firstOrNull);
+                              setState(() {
+                                FFAppState().isFinished = true;
+                              });
 
-                            setState(() {});
-                          },
-                          child: Lottie.asset(
-                            'assets/lottie_animations/animation_lktivwi8.json',
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: MediaQuery.sizeOf(context).height * 1.0,
-                            fit: BoxFit.fitWidth,
-                            controller: cookieAnimationController,
-                            onLoaded: (composition) => cookieAnimationController
-                                .duration = composition.duration,
+                              setState(() {});
+                            },
+                            child: Lottie.asset(
+                              'assets/lottie_animations/animation_lktivwi8.json',
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              fit: BoxFit.fitWidth,
+                              controller: cookieAnimationController,
+                              onLoaded: (composition) =>
+                                  cookieAnimationController.duration =
+                                      composition.duration,
+                            ),
                           ),
                         ),
-                      ),
                       if (FFAppState().isFinished)
                         InkWell(
                           splashColor: Colors.transparent,
@@ -115,7 +109,18 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            FFAppState().update(() {
+                            context.goNamed(
+                              'HomePage',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                ),
+                              },
+                            );
+
+                            setState(() {
                               FFAppState().isFinished = false;
                             });
                           },
@@ -130,6 +135,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                context.pushNamed(
+                                  'HomePage',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                    ),
+                                  },
+                                );
+
                                 setState(() {
                                   FFAppState().isFinished = false;
                                 });

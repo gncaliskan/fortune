@@ -67,10 +67,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => HomePageWidget(
-            isAnimationFinished:
-                params.getParam('isAnimationFinished', ParamType.bool),
-          ),
+          builder: (context, params) => HomePageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
